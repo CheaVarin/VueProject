@@ -9,6 +9,9 @@ npm install axios
         <input type="text" v-model="email" placeholder="Enter Email">
         <input type="password" v-model="password" placeholder="Enter Password">
         <button type="submit" v-on:click="signUp">SingUp</button>
+        <p>
+          <router-link to="/login">you have account ?</router-link>
+        </p>
     </div>
 </div>
 </template>
@@ -34,13 +37,20 @@ export default {
             });
             console.warn(result.data);
             if(result.status==201){
-                alert("Sign Up Done");
+                      localStorage.setItem("user-info",JSON.stringify(result.data))
+                      this.$router.push({name:'HomePage'})
             }
         }
+    },
+    mounted(){
+      let user = localStorage.getItem('user-info');
+      if(user){
+         this.$router.push({name:'HomePage'})
+      }
     }
 }
 </script>
-<style>
+<style scoped>
   .logo{
     width: 100px;
   }

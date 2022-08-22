@@ -1,13 +1,12 @@
 <template>
-  <SingUp />
+  <!-- <router-link ></router-link> -->
+  <router-view />
 </template>
 
 <script>
-import SingUp from './components/SingUp.vue'
 export default {
   name: 'App',
   components: {
-    SingUp
   }
 }
 </script>
